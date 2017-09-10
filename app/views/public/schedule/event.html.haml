@@ -2,6 +2,12 @@
 %h2 #{t "options.#{event.event_type.present? ? event.event_type : 'other' }"}: #{event.title}
 %h3.title= event.subtitle
 
+= content_for(:public_schedule_head) do
+  %meta{ :"name" => "twitter:card", content: "summary" }
+  %meta{ :"name" => "og:title", content:  event.title }
+  %meta{ :"name" => "og:description", content:  event.abstract }
+  %meta{ :"name" => "og:image", content:  event.logo }
+
 .column.left#basic
   = image_box(event.logo, :large)
   - if event.do_not_record
